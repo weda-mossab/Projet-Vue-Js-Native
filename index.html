@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="assets/style/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style/boxicons.min.css">
+    <link href="assets/style/style.css" rel="stylesheet" />
+    <link rel="icon" href="" type="image/png" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
+    <link href="./assets/style/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="icon" type="image/x-icon" href="./assets/img/logo.png">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+            <img src="./assets/img/logo.png" alt="" class="log">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link" href="#prod">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link" href="#rev">Review</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+<div id="app">
+    <div class="hero vh-100 d-flex align-items-center" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mx-auto text-center">
+                    <h1 class="display-4 text-white">OUR WATCHES ARE MADE WITH CAREFUL ATTENTION TO DETAIL.</h1>
+                    <p class="text-white my-3" style="font-size: larger;">
+                        <span style="font-size: 30px;">“</span>
+                        it doesn't just tell time
+                        it tell history
+                         <span style="font-size: 30px;">”</span>
+                    </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <section id="services ">
+        <div class="container" id="prod">
+            <div class="row mb-5">
+                <div class="col-md-8 mx-auto text-center">
+                    <h6 class="text-primary" >PRODUCTS</h6>
+                    <h1>Our Products</h1>
+                    <p>Explore our collection of prestigious high precision watches. 
+                        We have a wide selection of Oyster Perpetual and Cellini watch 
+                        models to suit all wrists. Discover the wide selection of watches:
+                         a perfect combination of style and functionality.</p>
+                </div>
+            </div>
+         
+            <div class="row g-4" id="prod">
+                <!-- product 0 -->
+            <div class="col-lg-4 col-sm-6">
+                <div class="service card-effect bounceInUp">
+                    <span style="font-size: 20px; font-weight: bold; color: black;">CART : <div class="cart">{{ nbprod }}</div> </span>
+                    <product :premium="premium"
+                    @addnb="addnb"
+                    @removenb="removenb"
+                    ></product>
+                </div>
+            </div>
+            
+                <!-- product 1 -->
+
+            <div class="col-lg-4 col-sm-6">
+                <div class="service card-effect" >
+                    <img v-bind:src="image1" alt="">
+                    
+                    <h5 class="mt-4 mb-2">{{product1}}</h5>   <img src="./assets/img/heart.png" alt="" class="fav" id="imgClickAndChange1" onclick="changeImage1()">
+                    <p> {{describ1}}</p>
+                   <p v-if="etat1" style="font-weight: bold; color: black;">Etat : <span style="color: green;">Disponible &nbsp; <i class="fas fa-check"></i></span> </p>
+                    <p v-else style="font-weight: bold; color: black;">Etat : <span style="color: red;">non-disponible &nbsp; <i class="fas fa-times"></i></span> </p>
+              
+                    <ul> <span style="font-weight: bold; color: black;">Details  :</span> 
+                  <li v-for="detail1 in details1" style="color: black;"> {{detail1}}</li>
+              </ul>
+              
+              <button class="btn" 
+              v-on:click="nbprod1 -=1" 
+              :disabled="!etat1">-</button><div class="btn">{{nbprod1}}</div> 
+              <button class="btn" v-on:click="nbprod1 +=1" :disabled="!etat1">+</button> 
+              
+              <br><br>
+              
+              <b style="font-size: large; font-weight: bold; color: black;">Couleurs :</b>
+            
+            <div 
+           v-for="variant1 in variants1" 
+        class="color"
+        :style="{ backgroundColor: variant1.color1}"
+        ></div> 
+                </div>
+            </div>
+        
+                <!-- product 2 -->
+        
+                <div class="col-lg-4 col-sm-6">
+                    <div class="service card-effect">
+                        <img v-bind:src="image2" alt="">
+                        
+                        <h5 class="mt-4 mb-2">{{product2}}</h5> <img src="./assets/img/heart.png" alt="" class="fav" id="imgClickAndChange2" onclick="changeImage2()">
+                        <p> {{describ2}}</p>
+                       <p v-if="etat2" style="font-weight: bold; color: black;">Etat : <span style="color: green;">Disponible &nbsp; <i class="fas fa-check"></i></span> </p>
+                        <p v-else style="font-weight: bold; color: black;">Etat : <span style="color: red;">non-disponible &nbsp; <i class="fas fa-times"></i></span> </p>
+                  
+                        <ul> <span style="font-weight: bold; color: black;">Details  :</span> 
+                      <li v-for="detail2 in details2" style="color: black;"> {{detail2}}</li>
+                  </ul>
+                  
+                  <button class="btn" 
+                  v-on:click="removenb()" 
+                  :disabled="!etat2">-</button><div class="btn">{{nbprod}}</div> 
+                  <button class="btn" v-on:click="addnb()" :disabled="!etat2">+</button> 
+                  
+                  <br><br>
+                  
+                  <b style="font-size: large; font-weight: bold; color: black;">Couleurs :</b>
+                
+                <div 
+               v-for="variant in variants2" 
+            @mouseover="updateimg(variant.image)"
+            class="color"
+           :style="{ backgroundColor: variant.color}"
+            ></div> 
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        </section>
+   
+<section id="contact">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-8 mx-auto text-center">
+                <h1 class="text-primary">Comment</h1>
+                <p>Let us know what you thinking</p >
+                    <div>
+ 
+              
+                        <review-form @review-submitted="addReview"></review-form>     
+                        <review-list :reviews="reviews" > </review-list>
+                   </div>
+            </div>
+        </div>
+    </div>
+ </section>
+ 
+ 
+<footer>
+  <div class="footer-top">
+      <div class="container">
+          <div class="row gy-3">
+              <div class="col-lg-4">
+             <img src="./assets/img/logo2.png" alt="" style="margin-left: 430px;"> 
+               </div>
+          </div>
+       </div><br>
+  <div class="footer-bottom py-1">
+      <div class="container">
+          <div class="row">
+
+              <div class="col-md-12" >
+                  <p class="mb-10 text-center" > © 2021-2022 | All Right Reserved </p>
+              </div>
+         
+                </div>
+      </div>
+  </div>
+  </div>
+</footer>
+</div>
+
+<script src="./js/main.js"></script>
+<script src="components/reviewList.js"></script>
+<script src="components/reviewForm.js"></script>
+<script src="./components/Product.js"></script>
+<script>const mountedApp = app.mount('#app');</script>
+  </body>
+</html>
